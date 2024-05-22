@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { exec } = require('child_process');
 
-const { getUsersByTypeV1 } = require("../helpers/db.js");
+const { getMessages, getUsersByTypeV1 } = require("../helpers/db.js");
 
 router.get("/users/type/:type", (req, res) => {
 
@@ -10,6 +10,12 @@ router.get("/users/type/:type", (req, res) => {
     "message": "success",
     "data": getUsersByTypeV1(req.params.type)
   });
+
+});
+
+router.get("/messages", (req, res) => {
+
+  res.json(getMessages());
 
 });
 

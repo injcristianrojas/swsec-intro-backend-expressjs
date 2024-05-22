@@ -32,13 +32,10 @@ router.get("/messages", (req, res) => {
     return;
   }
 
-  res.json({
-    "message": "success",
-    "data": getMessages()
-  });
+  res.json(getMessages());
 
 });
-router.post("/messages/new", (req, res) => {
+router.post("/messages/add", (req, res) => {
   if (!isTokenValid(req)) {
     res.status(401).json({ "error": "unauthorized" });
     return;

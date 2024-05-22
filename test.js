@@ -108,7 +108,7 @@ describe("Authenticated tests", function () {
   it("POST /api/v2/messages/new: Adding new post", function (done) {
     testPostMessage = "test message " + (new Date()).toISOString();
     chai.request(app)
-      .post("/api/v2/messages/new")
+      .post("/api/v2/messages/add")
       .set({ Authorization: `Bearer ${accessToken}` })
       .send({ message: testPostMessage })
       .end(function (_, res) {
@@ -123,7 +123,8 @@ describe("Authenticated tests", function () {
       .set({ Authorization: `Bearer ${accessToken}` })
       .end(function (_, res) {
         res.should.have.status(200)
-        res.body.data[2].should.have.property("message").to.include(testPostMessage);
+        res.body.should.be.an('array')
+        res.body[2].should.have.property("message").to.include(testPostMessage)
         done()
       });
   });
