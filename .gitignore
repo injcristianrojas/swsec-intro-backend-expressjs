@@ -1,0 +1,7 @@
+node_modules
+*.sqlite
+*dccache
+PRIVATE_NOTES.md
+TORPEDO.md
+.vscode
+swagger.json

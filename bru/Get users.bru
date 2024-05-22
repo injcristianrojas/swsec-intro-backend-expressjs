@@ -1,0 +1,15 @@
+meta {
+  name: Get users
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://127.0.0.1:9000/api/v2/users/type/2
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
