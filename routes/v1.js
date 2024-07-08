@@ -20,10 +20,10 @@ router.get("/messages", (req, res) => {
 });
 
 
-router.get('/weather/:city', (req, res) => {
-  const city = req.params.city;
+router.get('/healthcheck/:file?', (req, res) => {
+  const file = req.params.file ? req.params.file : 'healthcheck';
 
-  command = `./get_weather ${city}`
+  command = `cat ${file}`
 
   exec(command, (error, stdout, stderr) => {
     if (error) {

@@ -59,9 +59,20 @@ describe("Basic tests", function () {
       });
   });
 
-  it("GET /api/v1/weather: Should get weather", function (done) {
+  it("GET /api/v1/healthcheck: Should get healthcheck", function (done) {
     chai.request(app)
-      .get("/api/v1/weather/Valparaiso,Chile")
+      .get("/api/v1/healthcheck")
+      .end(function (_, res) {
+        res.should.have.status(200)
+        done()
+      });
+  });
+
+
+  //TODO improve this test
+  it("PWN /api/v1/healthcheck: Command injection", function (done) {
+    chai.request(app)
+      .get("/api/v1/healthcheck/healthcheck|echo 'PWN'")
       .end(function (_, res) {
         res.should.have.status(200)
         done()
