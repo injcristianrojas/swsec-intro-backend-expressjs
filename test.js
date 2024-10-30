@@ -116,7 +116,7 @@ describe("Authenticated tests", function () {
       });
   });
 
-  it("POST /api/v2/messages/new: Adding new post", function (done) {
+  it("POST /api/v2/messages/add: Adding new post", function (done) {
     testPostMessage = "test message " + (new Date()).toISOString();
     chai.request(app)
       .post("/api/v2/messages/add")
