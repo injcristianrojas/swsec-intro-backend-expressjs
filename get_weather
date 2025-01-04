@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-curl -s "https://wttr.in/$1?format=j1" | jq -r '.current_condition[0].temp_C'

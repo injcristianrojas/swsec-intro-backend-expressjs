@@ -22,7 +22,7 @@ describe("Basic tests", function () {
   it("POST /api/v2/login: Legit login should work", function (done) {
     chai.request(app)
       .post("/api/v2/login")
-      .send({ username: "admin", password: "123" })
+      .send({ username: "zorzal", password: "fio" })
       .end(function (_, res) {
         accessToken = res.body.token
         res.should.have.status(200)
@@ -59,9 +59,9 @@ describe("Basic tests", function () {
       });
   });
 
-  it("GET /api/v1/healthcheck: Should get healthcheck", function (done) {
+  it("GET /healthcheck: Should get healthcheck", function (done) {
     chai.request(app)
-      .get("/api/v1/healthcheck")
+      .get("/healthcheck")
       .end(function (_, res) {
         res.should.have.status(200)
         done()
@@ -70,9 +70,9 @@ describe("Basic tests", function () {
 
 
   //TODO improve this test
-  it("PWN /api/v1/healthcheck: Command injection", function (done) {
+  it("PWN /healthcheck: Command injection", function (done) {
     chai.request(app)
-      .get("/api/v1/healthcheck/healthcheck|echo 'PWN'")
+      .get("/healthcheck/healthcheck|echo 'PWN'")
       .end(function (_, res) {
         res.should.have.status(200)
         done()
@@ -111,7 +111,7 @@ describe("Authenticated tests", function () {
       .set({ Authorization: `Bearer ${accessToken}` })
       .end(function (_, res) {
         res.should.have.status(200)
-        res.body.data[0].should.have.property("username").to.include("admin-123");
+        res.body.data[0].should.have.property("username").to.include("admin");
         done()
       });
   });
